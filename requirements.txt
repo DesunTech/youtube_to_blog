@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+openai
+openai-whisper
+pytube
+python-dotenv
+youtube-transcript-api
+certifi
+yt-dlp

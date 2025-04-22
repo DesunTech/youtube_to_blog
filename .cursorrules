@@ -1,0 +1,19 @@
+# .cursorrules: YouTube-to-Blog Generator
+
+# Project Intelligence & Patterns
+
+*(This file will be populated with learned patterns, user preferences, critical implementation details, and other project-specific intelligence as development progresses.)*
+
+## Transcription Strategy
+- **Goal:** Prioritize transcription quality while adhering to the "free" requirement.
+- **Primary:** Use self-hosted Whisper (`tiny` or `base` model initially) for best quality/reliability achievable within potential free-tier resource constraints. Requires careful setup and resource management (CPU/GPU).
+- **Fallback:** Use `youtube-transcript-api` to fetch YouTube auto-captions if Whisper fails or is unavailable. Quality is variable; acknowledge this limitation.
+- **Dependency:** Requires `ffmpeg` system install and Python libraries `openai-whisper`, `pytube`, `youtube-transcript-api`.
+
+## Blog Generation LLM Strategy
+- **Goal:** Use a high-quality LLM with a free option, falling back to a completely free solution if needed.
+- **Primary:** Google Gemini (e.g., `gemini-2.0-flash`) via its OpenAI-compatible API endpoint. Leverages the free tier provided by Google.
+    - **Integration:** Use standard `openai` Python library, configuring the `base_url` and `api_key`.
+- **Fallback (Free):** Use a free model available via **OpenRouter's API** (e.g., Mistral 7B Instruct). Leverages their free tier.
+    - **Integration:** Use standard `openai` Python library, configuring the `base_url` for OpenRouter (`https://openrouter.ai/api/v1`) and an OpenRouter API key.
+    - **Constraint:** Dependent on OpenRouter's free tier availability, model selection, and rate limits. Quality likely lower than Gemini.
